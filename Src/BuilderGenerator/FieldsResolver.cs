@@ -19,9 +19,3 @@ internal static class FieldsResolver
         throw new NotSupportedException();
     }
 }
-
-internal class Field
-{
-    public string Name { get; set; }
-    public Type Type { get; set; }
-}

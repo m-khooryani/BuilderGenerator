@@ -2,8 +2,8 @@
 
 internal static class SetMethodsGenerator
 {
-    private const string FieldName = "@FieldName";
-    private const string FieldType = "@FieldType";
+    private const string FieldName = "@FieldName@";
+    private const string FieldType = "@FieldType@";
     private const string SetMethodTemplate = $@"
     public {Constants.ClassName} Set{FieldName}({FieldType} {FieldName})
     {{

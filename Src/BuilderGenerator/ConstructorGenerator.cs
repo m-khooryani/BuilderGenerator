@@ -2,9 +2,9 @@
 
 internal static class ConstructorGenerator
 {
-    private const string FieldName = "@FieldName";
-    private const string FieldDefaultValue = "@FieldDefaultValue";
-    private const string FieldInitialization = "@FieldInitialization";
+    private const string FieldName = "@FieldName@";
+    private const string FieldDefaultValue = "@FieldDefaultValue@";
+    private const string FieldInitialization = "@FieldInitialization@";
     private const string ConstructorTemplate = $@"
     public {Constants.ClassName}()
     {{
