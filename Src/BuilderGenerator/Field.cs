@@ -7,10 +7,6 @@ internal class Field
 
     public string TypeName()
     {
-        if (Type.IsPrimitive || Type == typeof(string))
-        {
-            return Type.Name;
-        }
-        throw new NotSupportedException();
+        return Type.ToCompilableName();
     }
 }
