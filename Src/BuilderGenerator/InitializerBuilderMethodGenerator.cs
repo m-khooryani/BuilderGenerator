@@ -12,8 +12,8 @@ internal class InitializerBuilderMethodGenerator : IBuilderMethodGenerator
             {Assignments}
         }};
     }}";
-    private const string FieldAssignmentTemplate = $@"
-            {FieldName} = this.{FieldName}";
+    private const string FieldAssignmentTemplate = 
+$@"            {FieldName} = this.{FieldName}";
 
     public string Generate(Type type)
     {

@@ -23,7 +23,7 @@ namespace @namespace;
 
 public class {Constants.ClassName}
 {{
-    {Constants.Fields}
+{Constants.Fields}
 
     {Constants.Constructor}
 
