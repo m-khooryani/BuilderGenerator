@@ -1,4 +1,6 @@
-﻿namespace BuilderGenerator;
+﻿using System.Collections;
+
+namespace BuilderGenerator;
 
 internal static class TypeExtensions
 {
@@ -6,7 +8,7 @@ internal static class TypeExtensions
     {
         var constructors = type.GetConstructors();
 
-        return constructors.Length == 1 && 
+        return constructors.Length == 1 &&
             constructors.First().GetParameters().Length == 0;
     }
 
@@ -20,6 +22,11 @@ internal static class TypeExtensions
         if (type.IsArray)
         {
             return type.FullName;
+        }
+        if (type.IsGenericType && (typeof(IList<>) == type.GetGenericTypeDefinition() ||
+            typeof(IList).IsAssignableFrom(type.GetGenericTypeDefinition())))
+        {
+            return "List<" + type.GetGenericArguments().First().ToCompilableName() + ">";
         }
         throw new NotSupportedException();
     }
