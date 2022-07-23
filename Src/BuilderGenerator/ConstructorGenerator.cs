@@ -10,8 +10,8 @@ internal static class ConstructorGenerator
     {{
         {FieldInitialization}
     }}";
-    private const string FieldInitializationTemplate = $@"
-        {FieldName} = {FieldDefaultValue};";
+    private const string FieldInitializationTemplate = 
+$@"        {FieldName} = {FieldDefaultValue};";
 
     internal static string Generate(Type type)
     {

@@ -21,7 +21,7 @@ internal static class SetMethodsGenerator
                     SetMethodTemplate
                         .Replace(FieldName, field.Name)
                         .Replace(Constants.ClassName, type.Name + Constants.BuilderPostfix)
-                        .Replace(FieldType, field.Type.Name)))
+                        .Replace(FieldType, field.TypeName())))
             .Trim();
     }
 }
