@@ -21,7 +21,7 @@ internal static class TypeExtensions
 
         if (type.IsArray)
         {
-            return type.FullName;
+            return type.GetElementType().ToCompilableName() + ArraySignPostfix(type);
         }
         if (type.IsGenericType && (typeof(IList<>) == type.GetGenericTypeDefinition() ||
             typeof(IList).IsAssignableFrom(type.GetGenericTypeDefinition())))
@@ -29,5 +29,20 @@ internal static class TypeExtensions
             return "List<" + type.GetGenericArguments().First().ToCompilableName() + ">";
         }
         throw new NotSupportedException();
+    }
+
+    private static string ArraySignPostfix(Type type)
+    {
+        var charsStack = new Stack<char>();
+
+        for (int i = type.FullName.Length - 1; i >= 0; i--)
+        {
+            charsStack.Push(type.FullName[i]);
+            if (type.FullName[i] == '[')
+            {
+                break;
+            }
+        }
+        return new string(charsStack.ToArray());
     }
 }
