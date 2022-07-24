@@ -20,11 +20,14 @@ public class FieldTypeTests
     }
 
     [Fact]
-    public void PrimitiveList_success1()
+    public void PrimitiveArrayAndListCombination_success()
     {
         var fields = FieldsResolver.GetFields(typeof(TypeWithArrayAndListCombination));
         Assert.Equal("List<Int32>[]", fields[0].TypeName());
         Assert.Equal("List<Int32[]>", fields[1].TypeName());
+        Assert.Equal("List<Int32[][][]>", fields[2].TypeName());
+        Assert.Equal("List<Int32>[,]", fields[3].TypeName());
+        Assert.Equal("List<Int32[][,,][]>", fields[4].TypeName());
     }
 
     private class TypeWithPrimitiveArray 
@@ -44,5 +47,8 @@ public class FieldTypeTests
     {
         public List<int>[] ListArrayProp { get; set; }
         public List<int[]> ArrayListProp { get; set; }
+        public List<int[][][]> JaggedArrayListProp { get; set; }
+        public List<int>[,] ListTwoDArrayProp { get; set; }
+        public List<int[][,,][]> JaggedTwoDMixedArrayListProp { get; set; }
     } 
 }

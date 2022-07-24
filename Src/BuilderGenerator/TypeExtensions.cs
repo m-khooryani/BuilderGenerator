@@ -33,16 +33,8 @@ internal static class TypeExtensions
 
     private static string ArraySignPostfix(Type type)
     {
-        var charsStack = new Stack<char>();
-
-        for (int i = type.FullName.Length - 1; i >= 0; i--)
-        {
-            charsStack.Push(type.FullName[i]);
-            if (type.FullName[i] == '[')
-            {
-                break;
-            }
-        }
-        return new string(charsStack.ToArray());
+        return new string(type
+            .FullName[type.FullName.LastIndexOf('[')..]
+            .ToArray());
     }
 }
