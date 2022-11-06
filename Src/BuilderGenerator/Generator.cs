@@ -15,6 +15,7 @@ public static class Generator
             .ToArray();
     }
 
+
     private const string BuilderTemplate = $@"
 using System;
 using System.Collections.Generic;
