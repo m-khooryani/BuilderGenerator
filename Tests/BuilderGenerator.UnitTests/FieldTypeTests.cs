@@ -30,6 +30,13 @@ public class FieldTypeTests
         Assert.Equal("List<Int32[][,,][]>", fields[4].TypeName());
     }
 
+    [Fact]
+    public void TypeWithDictionary_success()
+    {
+        var fields = FieldsResolver.GetFields(typeof(TypeWithDictionary));
+        Assert.Equal("Dictionary<String, Int32>", fields[0].TypeName());
+    }
+
     private class TypeWithPrimitiveArray 
     {
         public int[] IntArrayProp { get; set; }
@@ -50,5 +57,10 @@ public class FieldTypeTests
         public List<int[][][]> JaggedArrayListProp { get; set; }
         public List<int>[,] ListTwoDArrayProp { get; set; }
         public List<int[][,,][]> JaggedTwoDMixedArrayListProp { get; set; }
-    } 
+    }
+
+    private class TypeWithDictionary
+    {
+        public Dictionary<string, int> DictionaryProp { get; set; }
+    }
 }
