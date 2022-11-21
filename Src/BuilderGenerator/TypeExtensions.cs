@@ -28,6 +28,10 @@ internal static class TypeExtensions
         {
             return "List<" + type.GetGenericArguments().First().ToCompilableName() + ">";
         }
+        if (type.IsGenericType && (typeof(IReadOnlyList<>) == type.GetGenericTypeDefinition()))
+        {
+            return "List<" + type.GetGenericArguments().First().ToCompilableName() + ">";
+        }
         if (type.IsGenericType && (typeof(IDictionary<,>) == type.GetGenericTypeDefinition() ||
             typeof(IDictionary).IsAssignableFrom(type.GetGenericTypeDefinition())))
         {
