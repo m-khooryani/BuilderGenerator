@@ -37,6 +37,13 @@ public class FieldTypeTests
         Assert.Equal("Dictionary<String, Int32>", fields[0].TypeName());
     }
 
+    [Fact]
+    public void TypeWithReadonlyList_success()
+    {
+        var fields = FieldsResolver.GetFields(typeof(TypeWithReadonlyList));
+        Assert.Equal("List<Int32>", fields[0].TypeName());
+    }
+
     private class TypeWithPrimitiveArray 
     {
         public int[] IntArrayProp { get; set; }
@@ -62,5 +69,10 @@ public class FieldTypeTests
     private class TypeWithDictionary
     {
         public Dictionary<string, int> DictionaryProp { get; set; }
+    }
+
+    private class TypeWithReadonlyList
+    {
+        public IReadOnlyList<int> ListProp { get; set; }
     }
 }
